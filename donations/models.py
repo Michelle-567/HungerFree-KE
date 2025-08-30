@@ -1,21 +1,17 @@
 from django.db import models
-from accounts.models import User
+from django.conf import settings
 
-class FoodDonation(models.Model):
-    STATUS_CHOICES = [
-        ("available", "Available"),
-        ("claimed", "Claimed"),
-        ("delivered", "Delivered"),
-    ]
-
-    donor = models.ForeignKey(User, on_delete=models.CASCADE, related_name="donations")
-    title = models.CharField(max_length=100)
-    description = models.TextField()
-    quantity = models.CharField(max_length=50)
-    expiry_date = models.DateField(null=True, blank=True)
+class Donation(models.Model):
+    donor = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE
+    )
+    food_item = models.CharField(max_length=255)
+    quantity = models.PositiveIntegerField()
+    expiry_date = models.DateField()
     location = models.CharField(max_length=255)
-    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default="available")
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.title} - {self.status}"
+        return f"{self.food_item} by {self.donor}"
+
