@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Donate | HungerFree{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <h2 class="text-center mb-4">Make a Donation</h2>
+    <p class="text-center lead">
+        Every donation helps someone have a meal today. Join our mission to ensure no one sleeps hungry.
+    </p>
+    <div class="text-center mt-4">
+        <a href="{% url 'donate_form' %}" class="btn btn-success btn-lg">Donate Now</a>
+    </div>
+</div>
+{% endblock %}

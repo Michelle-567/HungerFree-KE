@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}Logged Out | HungerFree{% endblock %}
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="card shadow-lg p-4 text-center" style="max-width: 400px; width: 100%;">
+        <h3 class="mb-3">You have been logged out</h3>
+        <p class="text-muted">Thank you for visiting HungerFree.</p>
+        <a href="{% url 'login' %}" class="btn btn-primary w-100">Login Again</a>
+    </div>
+</div>
+{% endblock %}

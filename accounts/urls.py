@@ -1,6 +1,12 @@
-# accounts/urls.py
+
 from django.urls import path
+from .views import signup_view, login_view, logout_view
+from . import views
 
 urlpatterns = [
-    # We'll add real paths later (like login, register)
+    path("signup/", signup_view, name="signup"),
+    path("login/", login_view, name="login"),
+    path("logout/", logout_view, name="logout"),
+    path('volunteer/', views.volunteer_view, name='volunteer'),
+    
 ]

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+    <h2>All Donations</h2>
+    <div class="list-group">
+        {% for donation in donations %}
+        <div class="list-group-item">
+            <strong>{{ donation.donor.username }}</strong> donated
+            <em>{{ donation.donation_type }}</em>
+            {% if donation.amount %}
+            - ${{ donation.amount }}
+            {% endif %}
+            <br>
+            {{ donation.description }}
+            <small class="text-muted">on {{ donation.created_at }}</small>
+        </div>
+        {% empty %}
+        <p>No donations yet.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

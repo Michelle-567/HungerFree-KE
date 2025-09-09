@@ -42,7 +42,9 @@ INSTALLED_APPS = [
     "requests_app",
     "notifications",
     "partners",
+    "widget_tweaks",
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -59,8 +61,13 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        
         'APP_DIRS': True,
+    
+        # 'DIRS': [ BASE_DIR / "templates" ],
+        # 'DIRS': [ BASE_DIR / "templates" ],
+        'DIRS': [BASE_DIR / "core" / "templates"],
+
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -128,3 +135,7 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = "accounts.User"
+
+LOGIN_REDIRECT_URL = 'home'
+LOGIN_URL = 'login'
+LOGOUT_REDIRECT_URL = 'home'
